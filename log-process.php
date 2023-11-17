@@ -12,7 +12,9 @@
             $data = mysqli_fetch_array($query);
             if ($data['password']==$password) {
                 $_SESSION['id']=$data['owner_id'];
+                header('Location: ')
             }
+            else
         }
 
         elseif ($_POST['type']=='customer') {
