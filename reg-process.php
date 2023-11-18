@@ -31,13 +31,18 @@
             }
 
             #kalau dah ada username
-            else if ($cek['jumlah'] == 0) {
-                header('Location: register.php?username=false&email=true');
+            if ($cek['jumlah'] != 0 && $cek2['jumlah'] != 0) {
+                header('Location: register.php?username=false&email=false');
             }
 
             #kalau dah ada email
-            else {
+            else if($cek2['jumlah']==0){
                 header('Location: register.php?username=true&email=false');
+            }
+
+            #kalau dah ada username
+            else{
+                header('Location: register.php?username=false&email=true');
             }
         }
 
@@ -52,7 +57,7 @@
 
             #kalau bener
             if ($cek['jumlah'] == 0 && $cek2['jumlah']==0) {
-                if($sukses = mysqli_query($connect, "INSERT INTO `owner`(`name`, `username`, `password`, `email`, `profile_photo`) VALUES ('$name','$username','$password','$email','$profile')")){
+                if($sukses = mysqli_query($connect, "INSERT INTO `customer`(`name`, `username`, `password`, `email`, `profile_photo`) VALUES ('$name','$username','$password','$email','$profile')")){
                     header('Location: login.php');
                 }
                 else {
@@ -61,19 +66,23 @@
             }
 
             #kalau dah ada username
-            else if ($cek['jumlah'] == 0) {
-                header('Location: register.php?username=false&email=true');
+            if ($cek['jumlah'] != 0 && $cek2['jumlah'] != 0) {
+                header('Location: register.php?username=false&email=false');
             }
 
             #kalau dah ada email
-            else {
+            else if($cek2['jumlah']==0){
                 header('Location: register.php?username=true&email=false');
             }
 
+            #kalau dah ada username
+            else{
+                header('Location: register.php?username=false&email=true');
+            }
         }
 
         else {
-            
+            header('Location: error.php');
         }
 
     }

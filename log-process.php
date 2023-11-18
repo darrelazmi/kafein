@@ -3,31 +3,46 @@
     include('config.php');
 
     if (isset($_POST['login'])) {
+
+        #Ambil username ama pass dari POST
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $query;
 
+
+        #Untuk owner
         if ($_POST['type']=='owner') {
-            $query = mysqli_query("SELECT 'owner_id','password' FROM 'owner' WHERE 'username' = '$username' OR 'email' = '$username'");
+            $query = mysqli_query($connect, "SELECT `owner_id`,`password` FROM `owner` WHERE `username` = '$username' OR `email` = '$username'");
             $data = mysqli_fetch_array($query);
             if ($data['password']==$password) {
                 $_SESSION['id']=$data['owner_id'];
-                header('Location: ')
+                $_SESSION['type']=$_POST['type'];
+                header('Location: mycafe.php');
             }
-            else
+            else{
+                header('Location: login.php?status=false');
+            }
         }
 
+        #untuk customer
         elseif ($_POST['type']=='customer') {
-            $query = mysqli_query("SELECT 'owner_id','password' FROM 'owner' WHERE 'username' = '$username' OR 'email' = '$username'");
+            $query = mysqli_query( $connect, "SELECT customer_id, `password` FROM `customer` WHERE `username` = '$username' OR `email` = '$username'");
             $data = mysqli_fetch_array($query);
             if ($data['password']==$password) {
-                $_SESSION['id']=$data['owner_id'];
+                $_SESSION['id']=$data['customer_id'];
+                $_SESSION['type']=$_POST['type'];
+                header('Location: find.php');
+            }
+            else{
+                header('Location: login.php?status=false');
             }
         }
 
         else {
-            # code...
+            header('Location: error.php');
         }
         
+    }
+    else {
+        header('Location: error.php');
     }
 ?>
