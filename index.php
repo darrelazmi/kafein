@@ -1,46 +1,42 @@
-<?php if(isset($_GET['status'])): ?>
-
-    include('config.php');
-<p>
-	<?php
-		if($_GET['status'] == 'sukses'){
-			echo "Pendaftaran siswa baru berhasil!";
-		} 
-		else if($_GET['status'] == 'suksesedit'){
-			echo "Edit berhasil!";
-		}
-		else if($_GET['status'] == 'gagaledit'){
-			echo "Edit gagal!";
-		}
-		else {
-			echo "Pendaftaran gagal!";
-		}
-	?>
-</p>
-
-<?php endif; ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<title>Kafein | Test Page</title>
 </head>
+
 <body>
-    
-<?php if(isset($_GET['status'])): ?>
+	<header>
+		<h3>Register dan Login</h3>
+		<h1>Kafein | Test Page</h1>
+	</header>
+
+	<h4>Menu</h4>
+	<nav>
+		<ul>
+			<li><a href="register.php">Register</a></li>
+			<li><a href="login.php">Login</a></li>
+		</ul>
+	</nav>
+
+
+	<?php if(isset($_GET['status'])): ?>
 	<p>
 		<?php
-			if($_GET['status'] == 'failed'){
-				echo "Semangaat!";
+			if($_GET['status'] == 'sukses'){
+				echo "Pendaftaran siswa baru berhasil!";
 			} 
+			else if($_GET['status'] == 'suksesedit'){
+				echo "Edit berhasil!";
+			}
+			else if($_GET['status'] == 'gagaledit'){
+				echo "Edit gagal!";
+			}
+			else {
+				echo "Pendaftaran gagal!";
+			}
 		?>
 	</p>
-<?php endif; ?>
+	<?php endif; ?>
 
-
-</body>
+	</body>
 </html>
-
-
