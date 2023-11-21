@@ -34,7 +34,7 @@
 		</p>
         <p>
 			<label for="profile">Profile: </label>
-			<input type="text" name="profile" placeholder="enter here" />
+			<input type="file" name="profile" placeholder="enter here" />
 		</p>
 		<p>
 			<input type="submit" value="Register" name="register" />

@@ -9,11 +9,11 @@
 
         #query semua data untuk profile
         if ($_SESSION['type']=="owner") {
-            $query = mysqli_query($connect, "SELECT `name`, `username`, `password`, `email`, `profile_photo` FROM `owner` WHERE `id`='$id'");
+            $query = mysqli_query($connect, "SELECT `name`, `username`, `password`, `email`, `profile_photo` FROM `owner` WHERE `owner_id`='$id'");
             $data = mysqli_fetch_array($query);
         }
         elseif($_SESSION['type']=="customer"){
-            $query = mysqli_query($connect, "SELECT `name`, `username`, `password`, `email`, `profile_photo` FROM `customer` WHERE `id` = '$id'");
+            $query = mysqli_query($connect, "SELECT `name`, `username`, `password`, `email`, `profile_photo` FROM `customer` WHERE `customer_id` = '$id'");
             $data = mysqli_fetch_array($query);
         }
         else {
@@ -21,3 +21,45 @@
         }
     }
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile</title>
+</head>
+
+<body>
+	<header>
+		<h3>Profile</h3>
+	</header>
+
+	<form action="profile-edit.php" method="POST" enctype="multipart/form-data">
+		<fieldset>  
+		<p>
+			<label for="nama">Name: </label>
+			<input type="text" name="name" placeholder="Full Name" />
+		</p>
+		<p>
+			<label for="username">Username: </label>
+			<input type="text" name="username" placeholder="Username" />
+		</p>
+		<p>
+			<label for="password">Password: </label>
+			<input type="password" name="password" placeholder="enter here" />
+		</p>
+        <p>
+			<label for="email">Email: </label>
+			<input type="text" name="email" placeholder="enter here" />
+		</p>
+        <p>
+			<label for="profile">Profile: </label>
+			<input type="file" name="profile" placeholder="upload foto" />
+		</p>
+		<p>
+			<input type="submit" value="Edit" name="edit" />
+		</p>
+		</fieldset>
+	</form>
+
+	</body>
+</html>

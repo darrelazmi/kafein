@@ -8,7 +8,7 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
         $email = $_POST['email'];
-        $profile = $_POST['profile'];
+        $profile = $_FILES['profile']['tmp_name'];
 
 
         #untuk owner
@@ -22,7 +22,8 @@
 
             #kalau bener
             if ($cek['jumlah'] == 0 && $cek2['jumlah']==0) {
-                if($sukses = mysqli_query($connect, "INSERT INTO `owner`(`name`, `username`, `password`, `email`, `profile_photo`) VALUES ('$name','$username','$password','$email','$profile')")){
+                if($sukses = mysqli_query($connect, "INSERT INTO `owner`(`name`, `username`, `password`, `email`, `profile_photo`) VALUES ('$name','$username','$password','$email','$id')")){
+                    move_uploaded_file($profile,"./profiles/owner/" . $id);
                     header('Location: login.php');
                 }
                 else {
@@ -31,12 +32,12 @@
             }
 
             #kalau dah ada username
-            if ($cek['jumlah'] != 0 && $cek2['jumlah'] != 0) {
+            elseif ($cek['jumlah'] != 0 && $cek2['jumlah'] != 0) {
                 header('Location: register.php?username=false&email=false');
             }
 
             #kalau dah ada email
-            else if($cek2['jumlah']==0){
+            elseif($cek2['jumlah']==0){
                 header('Location: register.php?username=true&email=false');
             }
 
@@ -57,7 +58,8 @@
 
             #kalau bener
             if ($cek['jumlah'] == 0 && $cek2['jumlah']==0) {
-                if($sukses = mysqli_query($connect, "INSERT INTO `customer`(`name`, `username`, `password`, `email`, `profile_photo`) VALUES ('$name','$username','$password','$email','$profile')")){
+                if($sukses = mysqli_query($connect, "INSERT INTO `customer`(`name`, `username`, `password`, `email`, `profile_photo`) VALUES ('$name','$username','$password','$email','$id')")){
+                    move_uploaded_file($profile,"./profiles/customer/" . $id);
                     header('Location: login.php');
                 }
                 else {
@@ -66,12 +68,12 @@
             }
 
             #kalau dah ada username
-            if ($cek['jumlah'] != 0 && $cek2['jumlah'] != 0) {
+            elseif ($cek['jumlah'] != 0 && $cek2['jumlah'] != 0) {
                 header('Location: register.php?username=false&email=false');
             }
 
             #kalau dah ada email
-            else if($cek2['jumlah']==0){
+            elseif($cek2['jumlah']==0){
                 header('Location: register.php?username=true&email=false');
             }
 
