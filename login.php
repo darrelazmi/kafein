@@ -26,6 +26,19 @@
 			<input type="submit" value="Login" name="login" />
 		</p>
         </fieldset>
+
+		<?php if(isset($_GET['status'])): ?>
+			<p>
+				<?php
+					if($_GET['status'] == 'falsename'){
+						echo "Username tidak ditemukan";
+					}
+					elseif($_GET['status'] == 'falsepw'){
+						echo "Password yang anda masukkan salah";
+					}
+				?>
+			</p>
+		<?php endif; ?>
 </form>
 </body>
 </html>
