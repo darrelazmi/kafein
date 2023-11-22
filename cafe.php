@@ -1,5 +1,10 @@
 <?php
-    if(isset($_GET['cafe_id'])){
-        
+    session_start();
+    if(isset($_SESSION['id'])){
+        $id = $_SESSION['id'];
+        $type = $_SESSION['type'];
+        if (condition) {
+            # code...
+        }
     }
 ?>

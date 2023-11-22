@@ -61,5 +61,7 @@
 		</fieldset>
 	</form>
 
+	<button onclick="document.location='delete.php'">Delete Account</button>
+
 	</body>
 </html>
