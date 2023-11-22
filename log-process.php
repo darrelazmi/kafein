@@ -12,28 +12,40 @@
         #Untuk owner
         if ($_POST['type']=='owner') {
             $query = mysqli_query($connect, "SELECT `owner_id`,`password` FROM `owner` WHERE `username` = '$username' OR `email` = '$username'");
-            $data = mysqli_fetch_array($query);
-            if ($data['password']==$password) {
-                $_SESSION['id']=$data['owner_id'];
-                $_SESSION['type']=$_POST['type'];
-                header('Location: mycafe.php');
+            //klu uname/email nya ga ketemu
+            if(mysqli_num_rows($query) == 0){
+                header('Location: login.php?status=falsename');
             }
             else{
-                header('Location: login.php?status=false');
+                $data = mysqli_fetch_array($query);
+                if ($data['password']==$password) {
+                    $_SESSION['id']=$data['owner_id'];
+                    $_SESSION['type']=$_POST['type'];
+                    header('Location: mycafe.php');
+                }
+                else{
+                    header('Location: login.php?status=falsepw');
+                }
             }
         }
 
         #untuk customer
         elseif ($_POST['type']=='customer') {
             $query = mysqli_query( $connect, "SELECT customer_id, `password` FROM `customer` WHERE `username` = '$username' OR `email` = '$username'");
-            $data = mysqli_fetch_array($query);
-            if ($data['password']==$password) {
-                $_SESSION['id']=$data['customer_id'];
-                $_SESSION['type']=$_POST['type'];
-                header('Location: find.php');
+            //klu uname/email nya ga ketemu
+            if(mysqli_num_rows($query) == 0){
+                header('Location: login.php?status=falsename');
             }
             else{
-                header('Location: login.php?status=false');
+                $data = mysqli_fetch_array($query);
+                if ($data['password']==$password) {
+                    $_SESSION['id']=$data['customer_id'];
+                    $_SESSION['type']=$_POST['type'];
+                    header('Location: find.php');
+                }
+                else{
+                    header('Location: login.php?status=falsepw');
+                }
             }
         }
 
