@@ -10,7 +10,7 @@
         $profile_tmp = $_FILES["profile"]["tmp_name"];
         if ($_SESSION["type"] == "owner") {
             if($query = mysqli_query($connect,"UPDATE `owner` SET `name`='$name',`username`='$username',`password`='$password',`email`='$email' WHERE `owner_id`= '$id'")) {
-                move_uploaded_file($profile_tmp,"./profiles/owner/" . $id);
+                move_uploaded_file($profile_tmp,"./profiles/owner/" . $id . ".jpg");
                 header("Location: profile.php");
             }
             else {
@@ -19,7 +19,7 @@
         }
         elseif ($_SESSION["type"] == "customer") {
             if($query = mysqli_query($connect,"UPDATE `customer` SET `name`='$name',`username`='$username',`password`='$password',`email`='$email',`profile_photo`='$id' WHERE `customer_id`= '$id'")) {
-                move_uploaded_file($profile_tmp,"./profiles/customer/" . $id);
+                move_uploaded_file($profile_tmp,"./profiles/customer/" . $id . ".jpg");
                 header("Location: profile.php");
             }
             else {
