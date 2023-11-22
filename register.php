@@ -42,17 +42,26 @@
 		</fieldset>
 	</form>
 
+	<?php if(isset($_GET['status'])): ?>
+	<p>
+		<?php
+			if($_GET['status'] == '1'){
+				echo "Semua kolom harus terisi.<br>\n";
+			}
+		?>
+	</p>
+	<?php endif; ?>
 	<?php if(isset($_GET['username']) && isset($_GET['email'])): ?>
 	<p>
 		<?php
 			if($_GET['username'] == 'false'){
-				echo "Username sudah terdaftar";
+				echo "Username sudah terdaftar.<br>\n";
 			}
 			if($_GET['email'] == 'false'){
-				echo "Email sudah terdaftar";
+				echo "Email sudah terdaftar.<br>\n";
 			}
 			if($_GET['username'] == 'false' || $_GET['email'] == 'false'){
-				echo "Silahkan coba kembali";
+				echo "Silahkan coba kembali.<br>\n";
 			}
 		?>
 	</p>
