@@ -42,7 +42,7 @@
 		</fieldset>
 	</form>
 
-	<?php if(isset($_GET['username']) && isset($_GET['email']): ?>
+	<?php if(isset($_GET['username']) && isset($_GET['email'])): ?>
 	<p>
 		<?php
 			if($_GET['username'] == 'false'){
