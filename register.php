@@ -42,5 +42,21 @@
 		</fieldset>
 	</form>
 
+	<?php if(isset($_GET['username']) && isset($_GET['email']): ?>
+	<p>
+		<?php
+			if($_GET['username'] == 'false'){
+				echo "Username sudah terdaftar";
+			}
+			if($_GET['email'] == 'false'){
+				echo "Email sudah terdaftar";
+			}
+			if($_GET['username'] == 'false' || $_GET['email'] == 'false'){
+				echo "Silahkan coba kembali";
+			}
+		?>
+	</p>
+	<?php endif; ?>
+
 	</body>
 </html>
