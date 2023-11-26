@@ -30,7 +30,7 @@
 			<?php endif; ?>
 			<?php if(isset($_SESSION['id'])): ?>
 			<a class="navbar-brand" href="index.php">
-					<img src="" alt="">
+				<img src="./profiles/<?php echo $type; ?>/<?php echo $id; ?>.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
 			</a>
 			<ul class="navbar-nav">
 				<a class="navbar-brand" href="index.php">
