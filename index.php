@@ -29,9 +29,12 @@
 			</ul>
 			<?php endif; ?>
 			<?php if(isset($_SESSION['id'])): ?>
+			<a class="navbar-brand" href="index.php">
+					<img src="" alt="">
+			</a>
 			<ul class="navbar-nav">
-				<a class="navbar-brand" href="index.php">coba
-				
+				<a class="navbar-brand" href="index.php">
+					<img src="" alt="">
 				</a>
 				<li class="nav-item">
 					<a href=""></a>
