@@ -1,3 +1,9 @@
+<?php
+session_start();
+include('config.php');
+session_unset();
+session_destroy();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +12,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="log-process.php" method="POST">
+    <form action="log-process.php" method="POST" autofill="off" autocomplete="off">
 		<fieldset>
         <fieldset>
         <p>
@@ -27,18 +33,18 @@
 		</p>
         </fieldset>
 
-		<?php if(isset($_GET['status'])): ?>
-			<p>
-				<?php
-					if($_GET['status'] == 'falsename'){
-						echo "Username tidak ditemukan";
-					}
-					elseif($_GET['status'] == 'falsepw'){
-						echo "Password yang anda masukkan salah";
-					}
-				?>
-			</p>
-		<?php endif; ?>
-</form>
+	</form>
 </body>
 </html>
+<?php if(isset($_GET['status'])): ?>
+	<p>
+		<?php
+			if($_GET['status'] == 'falsename'){
+				echo "Username tidak ditemukan";
+			}
+			elseif($_GET['status'] == 'falsepw'){
+				echo "Password yang anda masukkan salah";
+			}
+		?>
+	</p>
+<?php endif; ?>

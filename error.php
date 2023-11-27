@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error</title>
-</head>
-<body>
-    <h3>Error</h3>
-</body>
-</html>
+<?php
+session_start();
+include('config.php');
+if(!isset($_SESSION['id'])){
+    session_unset();
+    session_destroy();
+    header("refresh:3; url=index.php");
+    die("Forbidden... Redirecting to home...");
+}
+?>

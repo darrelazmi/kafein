@@ -1,6 +1,15 @@
 <?php
     include('config.php');
     session_start();
+	if(!isset($_SESSION['id'])){
+        session_destroy();
+        header("refresh:3; url=index.php");
+        die("Forbidden... Redirecting to home...");
+    }
+    else{
+        $id = $_SESSION['id'];
+        $type = $_SESSION['type'];
+    }
     if (isset($_SESSION['id'])) {
 
         #Ambil ID dari session sama tipe pengguna
@@ -31,36 +40,37 @@
 <body>
 	<header>
 		<h3>Profile</h3>
+		<button onclick="document.location='logout.php'">Logout</button>
 	</header>
 
-	<form action="profile-edit.php" method="POST" enctype="multipart/form-data">
-		<fieldset>  
 		<p>
-			<label for="nama">Name: </label>
-			<input type="text" name="name" placeholder="Full Name" />
+			<label for="nama">Name: <?php echo $data['name']?></label>
+			
 		</p>
 		<p>
-			<label for="username">Username: </label>
-			<input type="text" name="username" placeholder="Username" />
-		</p>
-		<p>
-			<label for="password">Password: </label>
-			<input type="password" name="password" placeholder="enter here" />
+			<label for="username">Username: <?php echo $data['username']?></label>
+			
 		</p>
         <p>
-			<label for="email">Email: </label>
-			<input type="text" name="email" placeholder="enter here" />
-		</p>
-        <p>
-			<label for="profile">Profile: </label>
-			<input type="file" name="profile" placeholder="upload foto" />
+			<label for="email">Email: <?php echo $data['email']?></label>
+			
 		</p>
 		<p>
-			<input type="submit" value="Edit" name="edit" />
+			<label for="tipe">Tipe Akun: 
+			<?php 
+			if($type == 'owner'){
+				echo "Owner";
+			}
+			else{
+				echo "Customer";
+			}
+			?>
+			</label>
+			
 		</p>
-		</fieldset>
-	</form>
-
+	<br>
+	<button onclick="document.location='form-profile-edit.php'">Edit Account</button>
+	<br><br>
 	<button onclick="document.location='delete.php'">Delete Account</button>
 
 	</body>

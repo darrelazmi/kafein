@@ -1,3 +1,9 @@
+<?php
+session_start();
+include('config.php');
+session_unset();
+session_destroy();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +15,7 @@
 		<h3>Register</h3>
 	</header>
 
-	<form action="reg-process.php" method="POST">
+	<form action="reg-process.php" method="POST" autofill="off" autocomplete="off">
 		<fieldset>
         <p>
 			<label for="type">I am registering as: </label>
