@@ -22,18 +22,23 @@
 </head>
 <body>
 	<img class="bg-img" src="./assets/img/home1.png">
-	<nav class="navbar navbar-expand-sm bg-black navbar-dark" style="--bs-bg-opacity: .3;">
+	<nav class="navbar navbar-expand-sm navbar-dark fixed-top">
 		<div class="container">
 			<a class="navbar-brand" href="index.php">KAFFEIN</a>
 			<?php if(!isset($_SESSION['id'])): ?>
-			<ul class="navbar-nav">
-				<li class="nav-item">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      			<span class="navbar-toggler-icon"></span>
+    		</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item">
 					<a class="nav-link" href="register.php">Register</a>
-				</li>
-				<li class="nav-item">
+					</li>
+					<li class="nav-item">
 					<a class="nav-link" href="login.php">Login</a>
-				</li>
-			</ul>
+					</li>
+				</ul>
+			</div>
 			<?php endif; ?>
 			<?php if(isset($_SESSION['id'])): ?>
 			<ul class = "navbar-nav ms-auto">
@@ -42,12 +47,41 @@
 						<img src="./profiles/<?php echo $type; ?>/<?php echo $id; ?>.jpg" alt="Avatar Logo" style="width:40px;height:40px;" class="rounded-pill">
 					</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item d-none d-sm-block">
 					<a class="nav-link" href="profile.php">Welcome, <?php echo $username[0]; ?><a></span>
 				</li>
 			</ul>
 			<?php endif; ?>
 		</div>
 	</nav>
+
+	<div class="container-fluid text-img">
+		<div class="row">
+			<div class="col" style="padding-top: 20vh;" >
+				<p class="h1 text-white">BE OUR GUEST</p>
+			</div>
+		</div>
+		<div class="row d-flex justify-content-center">
+			<div class="col-4">
+				<p class="h5 bg-white text-dark">FIND YOUR FAVORITE CAFE EASIER</p>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		
+	</div>
+
+	<script>
+		const navDown = document.querySelector('.navbar');
+
+		window.addEventListener('scroll',() => {
+			if (window.scrollY >= 56) {
+				navDown.classList.add('navbar-scrolled');
+			}else if(window.scrollY < 56) {
+				navDown.classList.remove('navbar-scrolled');
+			}
+		});
+	</script>
 </body>
 </html>

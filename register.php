@@ -1,43 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Register New User</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="./assets/css/login.css">
 </head>
-
 <body>
-	<header>
-		<h3>Register</h3>
-	</header>
+    <div class="wrapper">
+        <div class="login-container">
+            <form action="reg-process.php" method="post"> <!-- Update the action to your registration script -->
+                <h2>Register</h2>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" value="Register" name="register">Register</button>
 
-	<form action="reg-process.php" method="POST">
-		<fieldset>
-        <p>
-			<label for="type">I am registering as: </label>
-			<label><input type="radio" name="type" value="customer" checked> Customer</label>
-			<label><input type="radio" name="type" value="owner"> Owner</label>
-		</p>
-		<p>
-			<label for="nama">Name: </label>
-			<input type="text" name="name" placeholder="Full Name" />
-		</p>
-		<p>
-			<label for="username">Username: </label>
-			<input type="text" name="username" placeholder="Username" />
-		</p>
-		<p>
-			<label for="password">Password: </label>
-			<input type="password" name="password" placeholder="enter here" />
-		</p>
-        <p>
-			<label for="email">Email: </label>
-			<input type="text" name="email" placeholder="enter here" />
-		</p>
-		<p>
-			<input type="submit" value="Register" name="register" />
-		</p>
-		</fieldset>
-	</form>
-
+                <div class="login-link">
+                    Already have an account? <a href="login.php">Login</a> <!-- Update href to your login page -->
+                </div>
+            </form>
+        </div>
+    </div>
 	<?php if(isset($_GET['status'])): ?>
 	<p>
 		<?php
