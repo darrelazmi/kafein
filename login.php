@@ -9,33 +9,36 @@ session_destroy();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="./assets/css/login.css">
 </head>
 <body>
-    <form action="log-process.php" method="POST" autofill="off" autocomplete="off">
-		<fieldset>
-        <fieldset>
-        <p>
-			<label for="type">Login as: </label>
-			<label><input type="radio" name="type" value="customer" checked> Customer</label>
-			<label><input type="radio" name="type" value="owner"> Owner</label>
-		</p>
-        <p>
-			<label for="username">Username: </label>
-			<input type="text" name="username" placeholder="Username" />
-		</p>
-		<p>
-			<label for="password">Password: </label>
-			<input type="password" name="password" placeholder="Password" />
-		</p>
-        <p>
-			<input type="submit" value="Login" name="login" />
-		</p>
-        </fieldset>
+    <div class="wrapper">
+        <div class="login-container">
+            <form action="log-process.php" method="POST">
+                <h2>Welcome Back!</h2>
+				<div class="form-group">
+					<label for="type">Login as: </label>
+					<label><input type="radio" name="type" value="customer" checked> Customer</label>
+					<label><input type="radio" name="type" value="owner"> Owner</label>
+				</div>
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
 
-	</form>
+                <div class="register-link">
+                    Don't have an account? <a href="register.php">Create an Account</a> <!-- Update href to your registration page -->
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
-</html>
 <?php if(isset($_GET['status'])): ?>
 	<p>
 		<?php
@@ -48,3 +51,4 @@ session_destroy();
 		?>
 	</p>
 <?php endif; ?>
+</html>
