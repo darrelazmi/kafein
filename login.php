@@ -18,10 +18,12 @@ session_destroy();
             <form action="log-process.php" method="POST">
                 <h2>Welcome Back!</h2>
 				<div class="form-group">
-					<label for="type">Login as: </label>
-					<label><input type="radio" name="type" value="customer" checked> Customer</label>
-					<label><input type="radio" name="type" value="owner"> Owner</label>
-				</div>
+                    <label for="type">Login as:</label>
+                    <select name="type" id="type">
+                        <option value="customer">Customer</option>
+                        <option value="owner">Owner</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" required>
@@ -30,7 +32,7 @@ session_destroy();
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit" value="Login" name="login">Login</button>
 
                 <div class="register-link">
                     Don't have an account? <a href="register.php">Create an Account</a> <!-- Update href to your registration page -->

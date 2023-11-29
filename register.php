@@ -18,6 +18,13 @@ session_destroy();
             <form action="reg-process.php" method="post"> <!-- Update the action to your registration script -->
                 <h2>Register</h2>
                 <div class="form-group">
+                    <label for="type">Register as:</label>
+                    <select name="type" id="type">
+                        <option value="customer">Customer</option>
+                        <option value="owner">Owner</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
                 </div>

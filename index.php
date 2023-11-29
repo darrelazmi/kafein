@@ -21,7 +21,32 @@
 	<link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
-	<img class="bg-img" src="./assets/img/home1.png">
+	<div class="container-fluid">
+		<img class="row bg-img" src="./assets/img/home1.png" style="z-index:-1;">
+		<div class="row d-flex justify-content-center">
+			<div class="col-4" style="padding-top: 20vh;" >
+				<p class="h1 text-white text-center">BE OUR GUEST</p>
+			</div>
+		</div>
+		<div class="row d-flex justify-content-center">
+			<div class="col-4">
+				<p class="h5 bg-white text-center" style="color: #c9bdab;">FIND YOUR FAVORITE CAFE EASIER!</p>
+			<div>
+		</div>
+		<div class="row justify-content-center align-items-center bg-white mt-5" style="border-radius: 25px;">
+			<div class="col-12 pt-3">
+				<p class="h6 text-center" style="color: #5a646e;">FIND YOUR FAVORITE CAFE NOW!</p>
+			</div>
+			<div class="col-12 pt-3">
+				<p class="h6 text-center">Join the communities of coffee lovers and unlock a world of exclusive opportunities.</p>
+			</div>
+			<div class="col-12 pt-3 pb-3 text-center">
+				<button type="button" class="btn btn-primary btn-md btn-block" onclick="document.location='login.php'">LOGIN HERE TO FIND YOUR CAFE</button>
+			</div>
+		</div>
+	</div>
+
+
 	<nav class="navbar navbar-expand-sm navbar-dark fixed-top">
 		<div class="container">
 			<a class="navbar-brand" href="index.php">KAFFEIN</a>
@@ -55,26 +80,8 @@
 		</div>
 	</nav>
 
-	<div class="container-fluid text-img">
-		<div class="row">
-			<div class="col" style="padding-top: 20vh;" >
-				<p class="h1 text-white">BE OUR GUEST</p>
-			</div>
-		</div>
-		<div class="row d-flex justify-content-center">
-			<div class="col-4">
-				<p class="h5 bg-white text-dark">FIND YOUR FAVORITE CAFE EASIER</p>
-			</div>
-		</div>
-	</div>
-
-	<div>
-		
-	</div>
-
 	<script>
 		const navDown = document.querySelector('.navbar');
-
 		window.addEventListener('scroll',() => {
 			if (window.scrollY >= 56) {
 				navDown.classList.add('navbar-scrolled');
