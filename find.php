@@ -71,7 +71,11 @@
 	</fieldset>
 </form>
 
-row
+<div class="row-cols-auto justify-content-center align-items-center g-2">
+	<div class="col">Column</div>
+	<div class="col">Column</div>
+	<div class="col">Column</div>
+</div>
 <?php
     $location = $_GET['loc'];
     if($location=='all') $query = mysqli_query($connect, "SELECT * FROM cafe");
