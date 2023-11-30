@@ -42,7 +42,9 @@
 		<h3>Profile</h3>
 		<button onclick="document.location='logout.php'">Logout</button>
 	</header>
-
+		<p>
+            <img src='./profiles/<?php echo .$type."/".$data['profile_photo'].?>.jpg' alt="<?php echo $data['name']?>">
+        </p>
 		<p>
 			<label for="nama">Name: <?php echo $data['name']?></label>
 			

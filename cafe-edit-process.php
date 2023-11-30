@@ -24,7 +24,10 @@
         }
         else{
             if($query = mysqli_query($connect, "UPDATE `cafe` SET `cafe_name`='$name',`kota`='$city',`description`='$description',`alamat`='$address' WHERE `cafe_id`= '$cafeid'")) {
-                move_uploaded_file($profile,"./profiles/cafe/" . $cafeid . ".jpg");
+                if(isset($profile)){
+                    $query2 = mysqli_query($connect, "UPDATE `cafe` SET `profile_cafe`='$cafeid'");
+                    move_uploaded_file($profile,"./profiles/cafe/" . $cafeid . ".jpg");
+                }
                 header("Location: cafe-detail.php?c_id=".$cafeid."");
             }
             else {

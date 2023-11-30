@@ -23,8 +23,11 @@
             header('Location: form-cafe-add.php?status=1');
         }
         else{
-            if($query = mysqli_query($connect, "INSERT INTO `cafe`(`owner_id`,`kota`,`cafe_name`,`description`,`profile_cafe`,`alamat`) VALUES ('$id','$city','$name','$description','$id','$address')")){
-                move_uploaded_file($profile,"./profiles/cafe/" . $id);
+            if($query = mysqli_query($connect, "INSERT INTO `cafe`(`owner_id`,`kota`,`cafe_name`,`description`,`alamat`) VALUES ('$id','$city','$name','$description','$address')")){
+                if(isset($profile)){
+                    $query2 = mysqli_query($connect, "UPDATE `cafe` SET `profile_cafe`='$cafeid'");
+                    move_uploaded_file($profile,"./profiles/cafe/" . $cafeid . ".jpg");
+                }
                 header('Location: mycafe.php?status=1');
             }
             else {
