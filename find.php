@@ -12,7 +12,10 @@
         if($type=='owner') $user = mysqli_query($connect,"SELECT username FROM $type WHERE `owner_id` = '$id'");
         else if($type=='customer') $user = mysqli_query($connect,"SELECT username FROM $type WHERE `customer_id` = '$id'");
         else header("Location: error.php");
-        $username = mysqli_fetch_array($user); 
+		if($type=='owner') $foto = mysqli_query($connect,"SELECT profile_photo FROM $type WHERE `owner_id` = '$id'");
+        else if($type=='customer') $foto = mysqli_query($connect,"SELECT profile_photo FROM $type WHERE `customer_id` = '$id'");
+        $profile_photo = mysqli_fetch_array($foto);
+		$username = mysqli_fetch_array($user); 
     }
 ?>
 <!DOCTYPE html>
@@ -48,7 +51,7 @@
 			<ul class = "navbar-nav ms-auto">
 				<li class="nav-item">
 					<a class="navbar-link" href="profile.php">
-						<img src="./profiles/<?php echo $type; ?>/<?php echo $id; ?>.jpg" alt="Avatar Logo" style="width:40px;height:40px;" class="rounded-pill">
+						<img src="./profiles/<?php echo $type; ?>/<?php echo $profile_photo[0]; ?>.jpg" alt="Avatar Logo" style="width:40px;height:40px;" class="rounded-pill">
 					</a>
 				</li>
 				<li class="nav-item d-none d-sm-block">
@@ -71,11 +74,6 @@
 	</fieldset>
 </form>
 
-<div class="row-cols-auto justify-content-center align-items-center g-2">
-	<div class="col">Column</div>
-	<div class="col">Column</div>
-	<div class="col">Column</div>
-</div>
 <?php
     $location = $_GET['loc'];
     if($location=='all') $query = mysqli_query($connect, "SELECT * FROM cafe");
