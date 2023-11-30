@@ -2,12 +2,7 @@
 	include("config.php");
 	session_start();
 	if (isset($_SESSION["id"])) {
-		$id = $_SESSION["id"];
-		$type = $_SESSION["type"];
-		if($type=="owner") $query = mysqli_query($connect,"SELECT `username` FROM `owner` WHERE `owner_id` = '$id'");
-		elseif ($type=="customer") $query =	mysqli_query($connect,"SELECT `username` FROM `customer` WHERE `customer_id` = '$id'");
-		else header("Location: error.php");
-		$username = mysqli_fetch_array($query);
+		header("Location: find.php");
 	}
 ?>
 <!DOCTYPE html>
@@ -49,8 +44,7 @@
 
 	<nav class="navbar navbar-expand-sm navbar-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="index.php">KAFFEIN</a>
-			<?php if(!isset($_SESSION['id'])): ?>
+			<a class="navbar-brand" href="index.php">KAFFEIN</a> 
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       			<span class="navbar-toggler-icon"></span>
     		</button>
@@ -64,19 +58,6 @@
 					</li>
 				</ul>
 			</div>
-			<?php endif; ?>
-			<?php if(isset($_SESSION['id'])): ?>
-			<ul class = "navbar-nav ms-auto">
-				<li class="nav-item">
-					<a class="navbar-link" href="profile.php">
-						<img src="./profiles/<?php echo $type; ?>/<?php echo $id; ?>.jpg" alt="Avatar Logo" style="width:40px;height:40px;" class="rounded-pill">
-					</a>
-				</li>
-				<li class="nav-item d-none d-sm-block">
-					<a class="nav-link" href="profile.php">Welcome, <?php echo $username[0]; ?><a></span>
-				</li>
-			</ul>
-			<?php endif; ?>
 		</div>
 	</nav>
 
