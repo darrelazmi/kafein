@@ -31,7 +31,7 @@
 
 <body>
 <div class="container-fluid">
-		<img class="row bg-img" src="./assets/img/home1.png" style="z-index:-1;">
+		<img class="row bg-img" src="./assets/img/home1.png" style="z-index:-1;height: 50vh;">
 		<div class="row d-flex justify-content-center">
 			<div class="col-4" style="padding-top: 20vh;" >
 				<p class="h1 text-white text-center">BE OUR GUEST</p>
@@ -60,43 +60,47 @@
 			</ul>
 		</div>
 	</nav>
+<form action="" method="GET">
+	<fieldset>
+	<div class="input-group mb-3" >
+ 		<label class="input-group-text" for="loc" >Choose City</label>
+  		<select  onchange="this.form.submit()" class="form-select" id="loc" name="loc">
+    		<option value="all" <?php if($_GET['loc']=='all') echo "selected";?>>All</option>
+    		<option value="bogor" <?php if($_GET['loc']=='bogor') echo "selected";?>>Bogor</option>
+    		<option value="jakarta" <?php if($_GET['loc']=='jakarta') echo "selected";?>>Jakarta</option>
+    		<option value="bekasi" <?php if($_GET['loc']=='bekasi') echo "selected";?>>Bekasi</option>
+  		</select>
+	</div>
+	</fieldset>
+</form>
 
-	<form action="" method="POST">
-		<fieldset>
-		<p>
-			<input type="text" name="loc" placeholder="City" />
-			<input type="submit" value="Find" name="find" />
-		</p>
-		</fieldset>
-    </form>
+row
 <?php
-    if(isset($_POST['find'])){
-        $location = $_POST['loc'];
-        $query = mysqli_query($connect, "SELECT * FROM cafe WHERE kota = '$location'");
-        if(mysqli_num_rows($query) == 0){
-            echo "Tidak ada cafe pada lokasi tersebut";
-        }
-        else{
-            echo "<table border = '1'>
-                <thead>
-                    <tr>
-	            		<th>Nama</th>
-	            		<th>Lokasi</th>
-                        <th>Alamat</th>
-	            	</tr>
-                </thead>
-                <tbody>";
-            while($cafe = mysqli_fetch_array($query)){
-                echo "<tr onclick='document.location=\"cafe-detail.php?c_id=" .$cafe['cafe_id']. "\"'.>";
-    
-                echo "<td><b>" . $cafe['cafe_name'] . "</b><br>" . $cafe['description'] . "</td>";
-                echo "<td>".$cafe['kota']."</td>";
-                echo "<td>".$cafe['alamat']."</td>";
+    $location = $_GET['loc'];
+    if($location=='all') $query = mysqli_query($connect, "SELECT * FROM cafe");
+	else $query = mysqli_query($connect, "SELECT * FROM cafe WHERE kota = '$location'");
+	if(mysqli_num_rows($query) == 0){
+        echo "Tidak ada cafe pada lokasi tersebut";
+    }
+    else{
+        echo "<table border = '1'>
+            <thead>
+                <tr>
+         		<th>Nama</th>
+         		<th>Lokasi</th>
+                    <th>Alamat</th>
+         	</tr>
+            </thead>
+            <tbody>";
+        while($cafe = mysqli_fetch_array($query)){
+            echo "<tr onclick='document.location=\"cafe-detail.php?c_id=" .$cafe['cafe_id']. "\"'.>";
 
-                echo "</tr>";
-    
-                }
-        }
+            echo "<td><b>" . $cafe['cafe_name'] . "</b><br>" . $cafe['description'] . "</td>";
+            echo "<td>".$cafe['kota']."</td>";
+            echo "<td>".$cafe['alamat']."</td>";
+            echo "</tr>";
+
+            }
     }
 ?>
     </tbody>
