@@ -65,7 +65,7 @@
 	<div class="input-group mb-3" >
  		<label class="input-group-text" for="loc" >Choose City</label>
   		<select  onchange="this.form.submit()" class="form-select" id="loc" name="loc">
-			<?php if($_GET['loc']=="") echo '<option value="choose" selected>Select city...</option>'?>
+			<?php if($_GET['loc']=="NULL") echo '<option value="choose" selected>Select city...</option>'?>
     		<option value="all" <?php if($_GET['loc']=='all') echo "selected";?>>All</option>
     		<option value="bogor" <?php if($_GET['loc']=='bogor') echo "selected";?>>Bogor</option>
     		<option value="jakarta" <?php if($_GET['loc']=='jakarta') echo "selected";?>>Jakarta</option>
