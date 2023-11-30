@@ -65,6 +65,7 @@
 	<div class="input-group mb-3" >
  		<label class="input-group-text" for="loc" >Choose City</label>
   		<select  onchange="this.form.submit()" class="form-select" id="loc" name="loc">
+			<?php if($_GET['loc']=="") echo '<option value="choose" selected>Select city...</option>'?>
     		<option value="all" <?php if($_GET['loc']=='all') echo "selected";?>>All</option>
     		<option value="bogor" <?php if($_GET['loc']=='bogor') echo "selected";?>>Bogor</option>
     		<option value="jakarta" <?php if($_GET['loc']=='jakarta') echo "selected";?>>Jakarta</option>
@@ -79,7 +80,9 @@
     if($location=='all') $query = mysqli_query($connect, "SELECT * FROM cafe");
 	else $query = mysqli_query($connect, "SELECT * FROM cafe WHERE kota = '$location'");
 	if(mysqli_num_rows($query) == 0){
-        echo "Tidak ada cafe pada lokasi tersebut";
+        if($location != "NULL"){
+			echo "Tidak ada cafe pada lokasi tersebut";
+		}
     }
     else{
         echo "<table border = '1'>
