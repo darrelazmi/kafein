@@ -24,7 +24,7 @@
     
                 #kalau bener
                 if ($cek['jumlah'] == 0 && $cek2['jumlah']==0) {
-                    if($sukses = mysqli_query($connect, "INSERT INTO `owner`(`name`, `username`, `password`, `email`, `profile_photo`) VALUES ('$name','$username','$password','$email','$id')")){
+                    if($sukses = mysqli_query($connect, "INSERT INTO `owner`(`name`, `username`, `password`, `email`) VALUES ('$name','$username','$password','$email')")){
                         header('Location: login.php');
                     }
                     else {
@@ -59,7 +59,7 @@
     
                 #kalau bener
                 if ($cek['jumlah'] == 0 && $cek2['jumlah']==0) {
-                    if($sukses = mysqli_query($connect, "INSERT INTO `customer`(`name`, `username`, `password`, `email`, `profile_photo`) VALUES ('$name','$username','$password','$email','$id')")){
+                    if($sukses = mysqli_query($connect, "INSERT INTO `customer`(`name`, `username`, `password`, `email`) VALUES ('$name','$username','$password','$email')")){
                         header('Location: login.php');
                     }
                     else {
