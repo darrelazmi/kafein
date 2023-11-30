@@ -24,7 +24,7 @@
         }
         else{
             if($query = mysqli_query($connect, "INSERT INTO `cafe`(`owner_id`,`kota`,`cafe_name`,`description`,`alamat`) VALUES ('$id','$city','$name','$description','$address')")){
-                if(isset($profile)){
+                if(is_uploaded_file($profile)){
                     $q_tmp = mysqli_query($connect, "SELECT * FROM `cafe` WHERE `owner_id`='$id' AND`kota`='$city' AND`cafe_name`='$name' AND`description`='$description' AND`alamat`='$address'");
                     $dat = mysqli_fetch_array($q_tmp);
                     $cafeid = $dat['cafe_id'];

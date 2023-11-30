@@ -24,7 +24,7 @@
         }
         else{
             if($query = mysqli_query($connect, "UPDATE `cafe` SET `cafe_name`='$name',`kota`='$city',`description`='$description',`alamat`='$address' WHERE `cafe_id`= '$cafeid'")) {
-                if(isset($profile)){
+                if(is_uploaded_file($profile)){
                     $query2 = mysqli_query($connect, "UPDATE `cafe` SET `profile_cafe`='$cafeid' WHERE `cafe_id`='$cafeid'");
                     move_uploaded_file($profile,"./profiles/cafe/" . $cafeid . ".jpg");
                 }
