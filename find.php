@@ -74,7 +74,6 @@
 	</fieldset>
 </form>
 
-row
 <?php
     $location = $_GET['loc'];
     if($location=='all') $query = mysqli_query($connect, "SELECT * FROM cafe");
