@@ -28,7 +28,9 @@
 		<h3>Cafe Detail</h3>
 		<button onclick="document.location='logout.php'">Logout</button>
 	</header>
-
+        <p>
+            <img src="./profiles/cafe/<?php echo $cafe_id?>.jpg" alt="<?php echo $data['cafe_name']?>">
+        </p>
 		<p>
 			<label for="nama">Cafe Name: <?php echo $data['cafe_name']?></label>
 			
