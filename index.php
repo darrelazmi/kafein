@@ -2,7 +2,7 @@
 	include("config.php");
 	session_start();
 	if (isset($_SESSION["id"])) {
-		header("Location: find.php");
+		header("Location: find.php?loc=NULL");
 	}
 ?>
 <!DOCTYPE html>
@@ -14,10 +14,26 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 	<title>Kaffein</title>
 	<link rel="stylesheet" href="./assets/css/styles.css">
+	<style>
+        body {
+            background: url('./assets/img/home1.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        @keyframes fadeInOut {
+            0%,100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s;
+        }
+        .btn:active {
+            transform: scale(0.95);
+        }
+    </style>
 </head>
 <body>
 	<div class="container-fluid">
-		<img class="row bg-img" src="./assets/img/home1.png" style="z-index:-1;">
 		<div class="row d-flex justify-content-center">
 			<div class="col-4" style="padding-top: 20vh;" >
 				<p class="h1 text-white text-center">BE OUR GUEST</p>
@@ -44,7 +60,9 @@
 
 	<nav class="navbar navbar-expand-sm navbar-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="index.php">KAFFEIN</a> 
+			<a class="navbar-brand" href="index.php">
+				<img src="./assets/img/3 crop.png" alt="KAFFEIN" class="logo" style="max-height: 40px; padd">
+			</a> 
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       			<span class="navbar-toggler-icon"></span>
     		</button>

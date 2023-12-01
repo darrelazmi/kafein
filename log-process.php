@@ -41,7 +41,7 @@
                 if ($data['password']==$password) {
                     $_SESSION['id']=$data['customer_id'];
                     $_SESSION['type']=$_POST['type'];
-                    header('Location: find.php');
+                    header('Location: find.php?loc=NULL');
                 }
                 else{
                     header('Location: login.php?status=falsepw');
