@@ -2,7 +2,12 @@
 	include("config.php");
 	session_start();
 	if (isset($_SESSION["id"])) {
-		header("Location: find.php?loc=NULL");
+		if($_SESSION["type"] == "customer"){
+			header("Location: find.php?loc=NULL");
+		}
+		else{
+			header("Location: mycafe.php?loc=NULL");
+		}
 	}
 ?>
 <!DOCTYPE html>
