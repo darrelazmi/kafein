@@ -135,9 +135,9 @@
 	<br>
     <?php
         if($type == "owner"){
-            echo "<button onclick=\"document.location='cafe-edit.php?c_id=".$data['cafe_id']."'\">Edit Cafe</button>
+            echo "<button class=\"btn btn-primary btn-animate\" onclick=\"document.location='cafe-edit.php?c_id=".$data['cafe_id']."'\">Edit Cafe</button>
             <br>";
-            echo "<br><button onclick=\"document.location='cafe-delete.php?id=".$data['cafe_id']."'\">Delete Cafe</button>
+            echo "<br><button class=\"btn btn-danger btn-animate\" onclick=\"document.location='cafe-delete.php?id=".$data['cafe_id']."'\">Delete Cafe</button>
             <br>";
         }
         else{
