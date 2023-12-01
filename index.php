@@ -6,7 +6,7 @@
 			header("Location: find.php?loc=NULL");
 		}
 		else{
-			header("Location: mycafe.php?loc=NULL");
+			header("Location: mycafe.php");
 		}
 	}
 ?>
