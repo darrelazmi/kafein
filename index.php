@@ -2,7 +2,7 @@
 	include("config.php");
 	session_start();
 	if (isset($_SESSION["id"])) {
-		header("Location: find.php");
+		header("Location: find.php?loc=NULL");
 	}
 ?>
 <!DOCTYPE html>

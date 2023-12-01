@@ -71,7 +71,14 @@
 		 <!-- Logo and Back Cafe Button -->
 		 <div>
                 <img src="./assets/img/3 crop.png" alt="Kaffein Logo" class="logo">
-                <button class="btn btn-success btn-animate" onclick="document.location='mycafe.php'">Back to My Cafe</button>
+                <?php
+                if($type=="owner"){
+                    echo "<button class=\"btn btn-success btn-animate\" onclick=\"document.location='mycafe.php'\">Back to My Cafe</button>";
+                }
+                else{
+                    echo "<button class=\"btn btn-success btn-animate\" onclick=\"document.location='find.php?loc=NULL'\">Back to Home</button>";
+                }
+                ?>
             </div>
 	<h3>Profile</h3>
 		<button class="btn btn-secondary btn-animate" onclick="document.location='logout.php'">Logout</button>
