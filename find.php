@@ -107,9 +107,10 @@
 	$location = $_GET['loc'];
 	if($location=='all') $query = mysqli_query($connect, "SELECT * FROM cafe");
 	else $query = mysqli_query($connect, "SELECT * FROM cafe WHERE kota = '$location'");
-    $query = mysqli_query($connect,"SELECT * FROM `cafe` WHERE `owner_id`='$id'");
     if(mysqli_num_rows($query) == 0){
-        echo "<br>Anda belum menambahkan kafe. Tambahkan kafe anda terlebih dahulu";
+        if($location != "NULL"){
+			echo "Tidak ada cafe pada lokasi tersebut";
+		}
     }
     else{
         echo "<table class = 'table table-hover'>
@@ -128,43 +129,13 @@
             echo "<td onclick='document.location=\"cafe-detail.php?c_id=" .$cafe['cafe_id']. "\"'.><b>" . $cafe['cafe_name'] . "</b><br>" . $cafe['description'] . "</td>";
             echo "<td onclick='document.location=\"cafe-detail.php?c_id=" .$cafe['cafe_id']. "\"'.>".$cafe['kota']."</td>";
             echo "<td><button class='btn btn-primary btn-sm' onclick='window.open(\"" . $cafe['alamat'] . "\", \"_blank\")'>Google Maps Here</button></td>";
-            echo "<td><button class='btn btn-primary btn-sm' onclick='window.location=\"cafe-edit.php?c_id=" . $cafe['cafe_id'] . "\"'>Edit</button></td>";             
+            echo "<td></td>";             
             echo "</tr>";
             
             }        
     }
 ?>
 
-<?php
-    $location = $_GET['loc'];
-    if($location=='all') $query = mysqli_query($connect, "SELECT * FROM cafe");
-	else $query = mysqli_query($connect, "SELECT * FROM cafe WHERE kota = '$location'");
-	if(mysqli_num_rows($query) == 0){
-        if($location != "NULL"){
-			echo "Tidak ada cafe pada lokasi tersebut";
-		}
-    }
-    else{
-        echo "<table border = '1'>
-            <thead>
-                <tr>
-         		<th>Nama</th>
-         		<th>Lokasi</th>
-                    <th>Alamat</th>
-         	</tr>
-            </thead>
-            <tbody>";
-        while($cafe = mysqli_fetch_array($query)){
-            echo "<tr onclick='document.location=\"cafe-detail.php?c_id=" .$cafe['cafe_id']. "\"'.>";
-
-            echo "<td><b>" . $cafe['cafe_name'] . "</b><br>" . $cafe['description'] . "</td>";
-            echo "<td>".$cafe['kota']."</td>";
-            echo "<td>".$cafe['alamat']."</td>";
-            echo "</tr>";
-
-            }
-    }
-?>
     </tbody>
 </table>
 	</body>
