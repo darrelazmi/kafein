@@ -27,13 +27,35 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 	<title>Kaffein</title>
 	<link rel="stylesheet" href="./assets/css/styles.css">
+	<style>
+        body {
+            background: url('./assets/img/home1.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+		.containery {
+            background-color: rgba(255, 255, 255, 0.8); /* Adding transparency */
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 60px;
+        }
+        @keyframes fadeInOut {
+            0%,100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s;
+        }
+        .btn:active {
+            transform: scale(0.95);
+        }
+    </style>
 </head>
 
 <body>
 <div class="container-fluid">
-		<img class="row bg-img" src="./assets/img/home1.png" style="z-index:-1;height: 50vh;">
 		<div class="row d-flex justify-content-center">
-			<div class="col-4" style="padding-top: 20vh;" >
+			<div class="col-4" style="padding-top: 18vh;" >
 				<p class="h1 text-white text-center">BE OUR GUEST</p>
 			</div>
 		</div>
@@ -47,7 +69,9 @@
 
 	<nav class="navbar navbar-expand-sm navbar-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="index.php">KAFFEIN</a>
+			<a class="navbar-brand" href="index.php">
+				<img src="./assets/img/3 crop.png" alt="KAFFEIN" class="logo" style="max-height: 40px; padd">
+			</a>
 			<ul class = "navbar-nav ms-auto">
 				<li class="nav-item">
 					<a class="navbar-link" href="profile.php">
@@ -60,20 +84,56 @@
 			</ul>
 		</div>
 	</nav>
+
 <form action="" method="GET">
 	<fieldset>
-	<div class="input-group mb-3" >
- 		<label class="input-group-text" for="loc" >Choose City</label>
-  		<select  onchange="this.form.submit()" class="form-select" id="loc" name="loc">
-			<?php if($_GET['loc']=="NULL") echo '<option value="choose" selected>Select city...</option>'?>
-    		<option value="all" <?php if($_GET['loc']=='all') echo "selected";?>>All</option>
-    		<option value="bogor" <?php if($_GET['loc']=='bogor') echo "selected";?>>Bogor</option>
-    		<option value="jakarta" <?php if($_GET['loc']=='jakarta') echo "selected";?>>Jakarta</option>
-    		<option value="bekasi" <?php if($_GET['loc']=='bekasi') echo "selected";?>>Bekasi</option>
-  		</select>
+	<div class="row g-0 text-center justify-content-center input-group mb-3">
+	<div class="col-12 g-0 d-inline-flex align-items-center">
+	<label class="input-group-text ms-auto" for="loc" style="width: 125px;" >Choose City</label>
+  	<select  onchange="this.form.submit()" class="form-select form-select me-auto" id="loc" name="loc" style="width: 20vw;">
+		<?php if($_GET['loc']=="NULL") echo '<option value="choose" selected>Select city...</option>'?>
+    	<option value="all" <?php if($_GET['loc']=='all') echo "selected";?>>All</option>
+    	<option value="bogor" <?php if($_GET['loc']=='bogor') echo "selected";?>>Bogor</option>
+    	<option value="jakarta" <?php if($_GET['loc']=='jakarta') echo "selected";?>>Jakarta</option>
+    	<option value="bekasi" <?php if($_GET['loc']=='bekasi') echo "selected";?>>Bekasi</option>
+  	</select>
+	</div>
 	</div>
 	</fieldset>
 </form>
+<?php
+    $id = $_SESSION["id"];
+    $type = $_SESSION["type"];
+	$location = $_GET['loc'];
+	if($location=='all') $query = mysqli_query($connect, "SELECT * FROM cafe");
+	else $query = mysqli_query($connect, "SELECT * FROM cafe WHERE kota = '$location'");
+    $query = mysqli_query($connect,"SELECT * FROM `cafe` WHERE `owner_id`='$id'");
+    if(mysqli_num_rows($query) == 0){
+        echo "<br>Anda belum menambahkan kafe. Tambahkan kafe anda terlebih dahulu";
+    }
+    else{
+        echo "<table class = 'table table-hover'>
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Lokasi</th>
+                    <th>Alamat</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>";
+        while($cafe = mysqli_fetch_array($query)){
+            echo "<tr>";
+            
+            echo "<td onclick='document.location=\"cafe-detail.php?c_id=" .$cafe['cafe_id']. "\"'.><b>" . $cafe['cafe_name'] . "</b><br>" . $cafe['description'] . "</td>";
+            echo "<td onclick='document.location=\"cafe-detail.php?c_id=" .$cafe['cafe_id']. "\"'.>".$cafe['kota']."</td>";
+            echo "<td><button class='btn btn-primary btn-sm' onclick='window.open(\"" . $cafe['alamat'] . "\", \"_blank\")'>Google Maps Here</button></td>";
+            echo "<td><button class='btn btn-primary btn-sm' onclick='window.location=\"cafe-edit.php?c_id=" . $cafe['cafe_id'] . "\"'>Edit</button></td>";             
+            echo "</tr>";
+            
+            }        
+    }
+?>
 
 <?php
     $location = $_GET['loc'];
