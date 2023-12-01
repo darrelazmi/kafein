@@ -14,6 +14,13 @@
         $cafe_id = $_GET['c_id'];
         $query = mysqli_query($connect, "SELECT * FROM `cafe` WHERE `cafe_id` = '$cafe_id'");
         $data = mysqli_fetch_array($query);
+        if($type=='owner') $user = mysqli_query($connect,"SELECT username FROM $type WHERE `owner_id` = '$id'");
+        else if($type=='customer') $user = mysqli_query($connect,"SELECT username FROM $type WHERE `customer_id` = '$id'");
+        else header("Location: error.php");
+		if($type=='owner') $foto = mysqli_query($connect,"SELECT profile_photo FROM $type WHERE `owner_id` = '$id'");
+        else if($type=='customer') $foto = mysqli_query($connect,"SELECT profile_photo FROM $type WHERE `customer_id` = '$id'");
+        $profile_photo = mysqli_fetch_array($foto);
+		$username = mysqli_fetch_array($user);
     }
 ?>
 
@@ -30,11 +37,13 @@
             background: url('./assets/img/home1.png') no-repeat center center fixed;
             background-size: cover;
         }
-        .container {
+        .containery {
             background-color: rgba(255, 255, 255, 0.8); /* Adding transparency */
             border-radius: 15px;
             padding: 20px;
-            margin-top: 60px;
+            margin-top: 80px;
+            margin-left: 40px;
+            margin-right: 40px;
         }
         @keyframes fadeInOut {
             0%,100% { opacity: 0.5; }
@@ -52,11 +61,30 @@
 
 
 <body>
-<div class="container">
+<nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="index.php">
+				<img src="./assets/img/3 crop.png" alt="KAFFEIN" class="logo" style="max-height: 40px; padd">
+			</a>
+			<ul class = "navbar-nav ms-auto">
+				<li class="nav-item">
+					<a class="navbar-link" href="profile.php">
+						<img src="./profiles/<?php echo $type; ?>/<?php echo $profile_photo[0]; ?>.jpg" alt="Avatar Logo" style="width:40px;height:40px;" class="rounded-pill">
+					</a>
+				</li>
+				<li class="nav-item d-none d-sm-block">
+					<a class="nav-link" href="profile.php">Welcome, <?php echo $username[0]; ?><a></span>
+				</li>
+				<li class="nav-item d-none d-sm-block">
+				<button class="btn btn-secondary btn-animate" onclick="document.location='logout.php'">Logout</button>
+				</li>
+			</ul>
+		</div>
+	</nav>
+<div class="containery">
 	<header class="d-flex justify-content-between align-items-center mt-5">
          <!-- Logo and Back Cafe Button -->
          <div>
-                <img src="./assets/img/3 crop.png" alt="Kaffein Logo" class="logo">
                 <?php
                 if($type=="owner"){
                     echo "<button class=\"btn btn-success btn-animate\" onclick=\"document.location='mycafe.php'\">Back to My Cafe</button>";
@@ -67,7 +95,7 @@
                 ?>
             </div>
 		<h3>Cafe Detail</h3>
-        <button class="btn btn-secondary btn-animate" onclick="document.location='logout.php'">Logout</button>
+       <div></div>
        
 	</header>
         <p>

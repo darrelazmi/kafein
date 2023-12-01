@@ -53,7 +53,7 @@
 </head>
 
 <body>
-<div class="container-fluid">
+	<div class="container-fluid">
 		<div class="row d-flex justify-content-center">
 			<div class="col-4" style="padding-top: 18vh;" >
 				<p class="h1 text-white text-center">BE OUR GUEST</p>
