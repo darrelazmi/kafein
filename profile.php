@@ -34,18 +34,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-	<title>Kaffein</title>
-	<link rel="stylesheet" href="./assets/css/styles.css">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <style>
+        body {
+            background: url('./assets/img/home1.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Adding transparency */
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 60px;
+        }
+        @keyframes fadeInOut {
+            0%,100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s;
+        }
+        .btn:active {
+            transform: scale(0.95);
+        }
+    </style>
 </head>
 
+
 <body>
-	<header>
-		<h3>Profile</h3>
-		<button onclick="document.location='logout.php'">Logout</button>
+	<div class="container">
+	<header class="d-flex justify-content-between align-items-center mt-5">
+		 <!-- Logo and Back Cafe Button -->
+		 <div>
+                <img src="./assets/img/3 crop.png" alt="Kaffein Logo" class="logo">
+                <button class="btn btn-success btn-animate" onclick="document.location='mycafe.php'">Back to My Cafe</button>
+            </div>
+	<h3>Profile</h3>
+		<button class="btn btn-secondary btn-animate" onclick="document.location='logout.php'">Logout</button>
 	</header>
 		<p>
             <img src='./profiles<?php 
@@ -78,9 +107,9 @@
 			
 		</p>
 	<br>
-	<button onclick="document.location='form-profile-edit.php'">Edit Account</button>
+	<button class="btn btn-secondary btn-animate" onclick="document.location='form-profile-edit.php'">Edit Profile</button>
 	<br><br>
-	<button onclick="document.location='delete.php'">Delete Account</button>
+	<button class="btn btn-danger btn-animate" onclick="document.location='delete.php'">Delete Account</button>
 
 	</body>
 </html>

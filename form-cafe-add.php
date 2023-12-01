@@ -60,7 +60,6 @@
 	<header class="text-center mt-5">
 		<h3>Add Cafe</h3>
 	</header>
-
 	<form action="cafe-add.php" method="POST" enctype="multipart/form-data" autofill="off" autocomplete="off" class="mt-4">
 		<fieldset>  
 		<p>
@@ -81,13 +80,15 @@
 		</p>
         <p>
 			<label for="profile">Cafe Profile: </label>
-			<input type="file" name="profile" placeholder="upload foto" />
+			<input type="file" name="profile" placeholder="upload foto"/>
 		</p>
 		<p>
 			<input type="submit" value="Add" name="tambah" class="btn btn-success btn-animate" />
 		</p>
 		</fieldset>
 	</form>
+
+    <button class="btn btn-secondary btn-animate" onclick="document.location='mycafe.php'">Back to My Cafe</button> 
 
 	</body>
 	<?php if(isset($_GET['status'])): ?>

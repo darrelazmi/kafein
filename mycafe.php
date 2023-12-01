@@ -49,7 +49,7 @@
         <header class="d-flex justify-content-between align-items-center mt-5">
             <!-- Logo and Add Cafe Button -->
             <div>
-                <img src="./assets/img/kaffein.jpg" alt="Kaffein Logo" class="logo">
+                <img src="./assets/img/3 crop.png" alt="Kaffein Logo" class="logo">
                 <button class="btn btn-success btn-animate" onclick="document.location='form-cafe-add.php'">Add Cafe</button>
             </div>
 
