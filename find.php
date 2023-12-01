@@ -84,17 +84,20 @@
 			</ul>
 		</div>
 	</nav>
+
 <form action="" method="GET">
 	<fieldset>
-	<div class="input-group mb-3" >
- 		<label class="input-group-text" for="loc" >Choose City</label>
-  		<select  onchange="this.form.submit()" class="form-select" id="loc" name="loc">
-			<?php if($_GET['loc']=="NULL") echo '<option value="choose" selected>Select city...</option>'?>
-    		<option value="all" <?php if($_GET['loc']=='all') echo "selected";?>>All</option>
-    		<option value="bogor" <?php if($_GET['loc']=='bogor') echo "selected";?>>Bogor</option>
-    		<option value="jakarta" <?php if($_GET['loc']=='jakarta') echo "selected";?>>Jakarta</option>
-    		<option value="bekasi" <?php if($_GET['loc']=='bekasi') echo "selected";?>>Bekasi</option>
-  		</select>
+	<div class="row g-0 text-center justify-content-center input-group mb-3">
+	<div class="col-12 g-0 d-inline-flex align-items-center">
+	<label class="input-group-text ms-auto" for="loc" style="width: 125px;" >Choose City</label>
+  	<select  onchange="this.form.submit()" class="form-select form-select me-auto" id="loc" name="loc" style="width: 20vw;">
+		<?php if($_GET['loc']=="NULL") echo '<option value="choose" selected>Select city...</option>'?>
+    	<option value="all" <?php if($_GET['loc']=='all') echo "selected";?>>All</option>
+    	<option value="bogor" <?php if($_GET['loc']=='bogor') echo "selected";?>>Bogor</option>
+    	<option value="jakarta" <?php if($_GET['loc']=='jakarta') echo "selected";?>>Jakarta</option>
+    	<option value="bekasi" <?php if($_GET['loc']=='bekasi') echo "selected";?>>Bekasi</option>
+  	</select>
+	</div>
 	</div>
 	</fieldset>
 </form>

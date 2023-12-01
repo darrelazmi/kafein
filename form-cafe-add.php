@@ -75,7 +75,7 @@
 			<input type="text" name="city" placeholder="City" />
 		</p>
         <p>
-			<label for="alamat">Address (Link Google Maps): </label>
+			<label for="alamat">Address (Link to Google Maps): </label>
 			<input type="text" name="alamat" placeholder="Address" />
 		</p>
         <p>

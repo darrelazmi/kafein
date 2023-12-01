@@ -34,12 +34,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Edit Profile</title>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <style>
+        body {
+            background: url('./assets/img/home1.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Adding transparency */
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 60px;
+        }
+        @keyframes fadeInOut {
+            0%,100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s;
+        }
+        .btn:active {
+            transform: scale(0.95);
+        }
+    </style>
 </head>
 
 <body>
-	<header>
+	<div class="container">
+	<header class="d-flex justify-content-between align-items-center mt-5">
+		 <!-- Logo and Back Cafe Button -->
+		 <div>
+                <img src="./assets/img/3 crop.png" alt="Kaffein Logo" class="logo">
+                <?php
+                if($type=="owner"){
+                    echo "<button class=\"btn btn-success btn-animate\" onclick=\"document.location='mycafe.php'\">Back to My Cafe</button>";
+                }
+                else{
+                    echo "<button class=\"btn btn-success btn-animate\" onclick=\"document.location='find.php?loc=NULL'\">Back to Home</button>";
+                }
+                ?>
+            </div>
 		<h3>Edit Profile</h3>
+		<button class="btn btn-secondary btn-animate" onclick="document.location='logout.php'">Logout</button>
 	</header>
 
 	<form action="profile-edit.php" method="POST" enctype="multipart/form-data" autofill="off" autocomplete="off">
@@ -65,7 +106,7 @@
 			<input type="file" name="profile" placeholder="upload foto" />
 		</p>
 		<p>
-			<input type="submit" value="Update" name="edit" />
+			<input type="submit" value="Update" name="edit" class="btn btn-success btn-animate" />
 		</p>
 		</fieldset>
 	</form>
