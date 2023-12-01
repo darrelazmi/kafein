@@ -57,7 +57,8 @@
          <!-- Logo and Add Cafe Button -->
          <div>
                 <img src="./assets/img/3 crop.png" alt="Kaffein Logo" class="logo">
-                <button class="btn btn-success btn-animate" onclick="document.location='mycafe.php'">Back to My Cafe</button>
+                <button class="btn btn-success btn-animate" onclick="document.location='mycafe.php'">My Cafe</button>
+                <button class="btn btn-success btn-animate" onclick="document.location='cafe-detail.php?c_id=<?php echo $cafe_id?>'">Back to Cafe Detail</button>
             </div>
 		<h3>Cafe Edit</h3>
 		<button class="btn btn-secondary btn-animate" onclick="document.location='logout.php'">Logout</button>

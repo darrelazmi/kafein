@@ -114,7 +114,7 @@
 			
 		</p>
 	<br>
-	<button class="btn btn-secondary btn-animate" onclick="document.location='form-profile-edit.php'">Edit Profile</button>
+	<button class="btn btn-primary btn-animate" onclick="document.location='form-profile-edit.php'">Edit Profile</button>
 	<br><br>
 	<button class="btn btn-danger btn-animate" onclick="document.location='delete.php'">Delete Account</button>
 
