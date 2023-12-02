@@ -198,6 +198,15 @@
             }
         }
     ?>
-
+<script>
+		const navDown = document.querySelector('.navbar');
+		window.addEventListener('scroll',() => {
+			if (window.scrollY >= 56) {
+				navDown.classList.add('navbar-scrolled');
+			}else if(window.scrollY < 56) {
+				navDown.classList.remove('navbar-scrolled');
+			}
+		});
+</script>
 	</body>
 </html>

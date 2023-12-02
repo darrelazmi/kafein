@@ -66,7 +66,7 @@
 	<nav class="navbar navbar-expand-sm navbar-dark fixed-top">
 		<div class="container">
 			<a class="navbar-brand" href="index.php">
-				<img src="./assets/img/3 crop.png" alt="KAFFEIN" class="logo" style="max-height: 40px; padd">
+				<img src="./assets/img/3 crop.png" alt="KAFFEIN" class="logo" style="max-height: 40px;">
 			</a> 
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       			<span class="navbar-toggler-icon"></span>

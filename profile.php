@@ -137,6 +137,15 @@
 	<button class="btn btn-primary btn-animate" onclick="document.location='form-profile-edit.php'">Edit Profile</button>
 	<br><br>
 	<button class="btn btn-danger btn-animate" onclick="document.location='delete.php'">Delete Account</button>
-
+    <script>
+		const navDown = document.querySelector('.navbar');
+		window.addEventListener('scroll',() => {
+			if (window.scrollY >= 56) {
+				navDown.classList.add('navbar-scrolled');
+			}else if(window.scrollY < 56) {
+				navDown.classList.remove('navbar-scrolled');
+			}
+		});
+	</script>
 	</body>
 </html>

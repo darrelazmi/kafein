@@ -118,7 +118,16 @@
 	</form>
 
     <button class="btn btn-secondary btn-animate" onclick="document.location='mycafe.php'">Back to My Cafe</button> 
-
+	<script>
+		const navDown = document.querySelector('.navbar');
+		window.addEventListener('scroll',() => {
+			if (window.scrollY >= 56) {
+				navDown.classList.add('navbar-scrolled');
+			}else if(window.scrollY < 56) {
+				navDown.classList.remove('navbar-scrolled');
+			}
+		});
+	</script>
 	</body>
 	<?php if(isset($_GET['status'])): ?>
 	<p class="text-center">

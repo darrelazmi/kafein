@@ -70,7 +70,7 @@
 	<nav class="navbar navbar-expand-sm navbar-dark fixed-top">
 		<div class="container">
 			<a class="navbar-brand" href="index.php">
-				<img src="./assets/img/3 crop.png" alt="KAFFEIN" class="logo" style="max-height: 40px; padd">
+				<img src="./assets/img/3 crop.png" alt="KAFFEIN" class="logo" style="max-height: 40px;">
 			</a>
 			<ul class = "navbar-nav ms-auto">
 				<li class="nav-item">
@@ -145,6 +145,17 @@
 		</tbody>
 	</table>
 </div>
+
+<script>
+		const navDown = document.querySelector('.navbar');
+		window.addEventListener('scroll',() => {
+			if (window.scrollY >= 56) {
+				navDown.classList.add('navbar-scrolled');
+			}else if(window.scrollY < 56) {
+				navDown.classList.remove('navbar-scrolled');
+			}
+		});
+</script>
 	</body>
 </html>
 
