@@ -33,7 +33,7 @@
             background-size: cover;
         }
 		.containery {
-            background-color: rgba(255, 255, 255, 0.8); /* Adding transparency */
+            background-color: rgba(255, 255, 255, 0); /* Adding transparency */
             border-radius: 15px;
             padding: 20px;
             margin-top: 60px;
@@ -53,7 +53,7 @@
 </head>
 
 <body>
-<div class="container-fluid">
+	<div class="container-fluid">
 		<div class="row d-flex justify-content-center">
 			<div class="col-4" style="padding-top: 18vh;" >
 				<p class="h1 text-white text-center">BE OUR GUEST</p>
@@ -81,10 +81,12 @@
 				<li class="nav-item d-none d-sm-block">
 					<a class="nav-link" href="profile.php">Welcome, <?php echo $username[0]; ?><a></span>
 				</li>
+				<li class="nav-item d-none d-sm-block">
+				<button class="btn btn-secondary btn-animate" onclick="document.location='logout.php'">Logout</button>
+				</li>
 			</ul>
 		</div>
 	</nav>
-
 <form action="" method="GET">
 	<fieldset>
 	<div class="row g-0 text-center justify-content-center input-group mb-3">
@@ -101,6 +103,10 @@
 	</div>
 	</fieldset>
 </form>
+</body>
+<body>
+<div class="containery">
+
 <?php
     $id = $_SESSION["id"];
     $type = $_SESSION["type"];
@@ -116,28 +122,29 @@
         echo "<table class = 'table table-hover'>
             <thead>
                 <tr>
+					<th></th>
                     <th>Nama</th>
                     <th>Lokasi</th>
                     <th>Alamat</th>
-                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>";
         while($cafe = mysqli_fetch_array($query)){
             echo "<tr>";
             
+            echo "<td><img src=\"./profiles/cafe/".$cafe['profile_cafe'].".jpg\" alt=\"".$cafe['cafe_name']."\" style=\"max-height: 100px; display:block; margin-left:auto; margin-right:auto;\"></td>";             
             echo "<td onclick='document.location=\"cafe-detail.php?c_id=" .$cafe['cafe_id']. "\"'.><b>" . $cafe['cafe_name'] . "</b><br>" . $cafe['description'] . "</td>";
             echo "<td onclick='document.location=\"cafe-detail.php?c_id=" .$cafe['cafe_id']. "\"'.>".$cafe['kota']."</td>";
             echo "<td><button class='btn btn-primary btn-sm' onclick='window.open(\"" . $cafe['alamat'] . "\", \"_blank\")'>Google Maps Here</button></td>";
-            echo "<td></td>";             
             echo "</tr>";
             
             }        
     }
 ?>
 
-    </tbody>
-</table>
+		</tbody>
+	</table>
+</div>
 	</body>
 </html>
 
