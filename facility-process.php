@@ -22,11 +22,17 @@
     }
     if(isset($_POST['add'])){
         $fac = $_POST['fac_baru'];
-        if($query = mysqli_query($connect, "INSERT INTO `facilities`(`cafe_id`, `facility_type`) VALUES ('$cafeid', '$fac')")){
-            header("Location: cafe-edit.php?c_id=".$cafeid."");
+        $cek = mysqli_query($connect, "SELECT * FROM `facilities` WHERE `cafe_id` = '$cafeid' AND `facility_type` = '$fac'");
+        if(mysqli_num_rows($cek) > 0){
+            header("Location: cafe-edit.php?c_id=".$cafeid."&status=f_f");
         }
         else{
-            echo "Gagal";
+            if($query = mysqli_query($connect, "INSERT INTO `facilities`(`cafe_id`, `facility_type`) VALUES ('$cafeid', '$fac')")){
+                header("Location: cafe-edit.php?c_id=".$cafeid."");
+            }
+            else{
+                echo "Gagal";
+            }
         }
     }
 ?>

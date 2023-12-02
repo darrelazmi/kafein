@@ -31,6 +31,7 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <title>Edit Cafe</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
     <style>
@@ -142,13 +143,26 @@
                     echo "</form>";
                 }
                 ?>
+                <form action="facility-process.php" method="POST" enctype="multipart/form-data" autofill="off" autocomplete="off">
+                    <p>    
+                        <input type="text" name="fac_baru" placeholder="Facility"/>
+                        <input type="submit" value="Add" name="add" />
+                    <p>
+                </form>
+                
+                <?php
+                if(isset($_GET['status'])){
+                    if($_GET['status'] == "f_f"){
+                        ?>
+                        <div class="alert alert-danger alert-dismissible fade show">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <strong>Gagal!</strong> Fasilitas telah ditambahkan pada cafe.
+                        </div>
+                        <?php
+                    }
+                }
+                ?>
         </p>
-    <form action="facility-process.php" method="POST" enctype="multipart/form-data" autofill="off" autocomplete="off">
-        <p>    
-            <input type="text" name="fac_baru" placeholder="Facility"/>
-            <input type="submit" value="Add" name="add" />
-        <p>
-    </form>
         <p>
             <label for="menu">Menus: </label>
             <br>
@@ -166,15 +180,26 @@
                     echo "</form>";
                 }
             ?>
-			
+            <form action="menu-process.php" method="POST" enctype="multipart/form-data" autofill="off" autocomplete="off">
+                <p>    
+                    <input type="text" name="menu_baru" placeholder="Menu"/>
+                    <input type="text" name="harga" placeholder="Price"/>
+                    <input type="submit" value="Add" name="add" />
+                <p>
+            </form>
+			<?php
+                if(isset($_GET['status'])){
+                    if($_GET['status'] == "f_m"){
+                        ?>
+                        <div class="alert alert-danger alert-dismissible fade show">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <strong>Gagal!</strong> Menu telah ditambahkan pada cafe.
+                        </div>
+                        <?php
+                    }
+                }
+                ?>
 		</p>
-        <form action="menu-process.php" method="POST" enctype="multipart/form-data" autofill="off" autocomplete="off">
-            <p>    
-                <input type="text" name="menu_baru" placeholder="Menu"/>
-                <input type="text" name="harga" placeholder="Price"/>
-                <input type="submit" value="Add" name="add" />
-            <p>
-        </form>
 	    <br>
 
     <script>

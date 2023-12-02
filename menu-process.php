@@ -23,11 +23,17 @@
     if(isset($_POST['add'])){
         $menu = $_POST['menu_baru'];
         $price = $_POST['harga'];
-        if($query = mysqli_query($connect, "INSERT INTO `menus`(`cafe_id`, `goods`, `price`) VALUES ('$cafeid', '$menu', '$price')")){
-            header("Location: cafe-edit.php?c_id=".$cafeid."");
+        $cek = mysqli_query($connect, "SELECT * FROM `menus` WHERE `cafe_id`='$cafeid' AND `goods`='$menu'");
+        if(mysqli_num_rows($cek) > 0){
+            header("Location: cafe-edit.php?c_id=".$cafeid."&status=f_m");
         }
         else{
-            echo "Gagal";
+            if($query = mysqli_query($connect, "INSERT INTO `menus`(`cafe_id`, `goods`, `price`) VALUES ('$cafeid', '$menu', '$price')")){
+                header("Location: cafe-edit.php?c_id=".$cafeid."");
+            }
+            else{
+                echo "Gagal";
+            }
         }
     }
 ?>
